@@ -1,0 +1,760 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <meta name="theme-color" content="#111111" />
+
+  <title>Anamorphic Desqueeze Pro — Batch Desqueeze + CinemaScope Export for Photos & Videos</title>
+  <meta name="description" content="Desqueeze anamorphic photos & videos on Windows with batch processing, CinemaScope (2.39:1) crop/pad, custom ratios, and export-selected workflows. Drag & drop MP4/MOV/JPG/PNG/TIF and export clean results fast." />
+  <meta name="robots" content="index,follow" />
+  <link rel="canonical" href="https://YOUR-DOMAIN-HERE.com/" />
+
+  <!-- Open Graph -->
+  <meta property="og:title" content="Anamorphic Desqueeze Pro" />
+  <meta property="og:description" content="Batch desqueeze anamorphic photos & videos + CinemaScope export on Windows." />
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://YOUR-DOMAIN-HERE.com/" />
+  <meta property="og:image" content="https://YOUR-DOMAIN-HERE.com/assets/og-image.png" />
+
+  <!-- Twitter -->
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Anamorphic Desqueeze Pro" />
+  <meta name="twitter:description" content="Batch desqueeze + CinemaScope export for photos & videos on Windows." />
+  <meta name="twitter:image" content="https://YOUR-DOMAIN-HERE.com/assets/og-image.png" />
+
+  <!-- JSON-LD (SoftwareApplication) -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "SoftwareApplication",
+    "name": "Anamorphic Desqueeze Pro",
+    "applicationCategory": "MultimediaApplication",
+    "operatingSystem": "Windows",
+    "description": "Desqueeze anamorphic photos & videos on Windows with batch processing, CinemaScope export, custom ratios, and export-selected workflows.",
+    "softwareVersion": "1.0.10.0",
+    "offers": {
+      "@type": "Offer",
+      "priceCurrency": "USD",
+      "price": "0",
+      "availability": "https://schema.org/InStock"
+    }
+  }
+  </script>
+
+  <style>
+    :root{
+      --bg:#111111;
+      --panel:#151515;
+      --card:#0F0F0F;
+      --border:#2A2A2A;
+      --text:#FFFFFF;
+      --sub:#CFCFCF;
+      --muted:#9A9A9A;
+      --muted2:#777777;
+
+      --accent:#6C5CE7;
+      --accent2:#7B6CF0;
+
+      --blue:#2D6CDF;
+      --blueHover:#3577F0;
+
+      --danger:#B23B3B;
+      --dangerHover:#C44949;
+
+      --okBg:#122318;
+      --okBorder:#1E6C3A;
+      --okText:#9FE3B0;
+
+      --radius:14px;
+      --shadow: 0 12px 40px rgba(0,0,0,.45);
+      --max: 1180px;
+    }
+
+    *{box-sizing:border-box}
+    html{scroll-behavior:smooth}
+    body{
+      margin:0;
+      font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Arial, "Noto Sans", "Liberation Sans", sans-serif;
+      background: radial-gradient(1200px 700px at 20% -10%, rgba(108,92,231,.25), transparent 60%),
+                  radial-gradient(900px 700px at 90% 10%, rgba(45,108,223,.18), transparent 55%),
+                  var(--bg);
+      color:var(--text);
+      line-height:1.45;
+    }
+
+    a{color:inherit; text-decoration:none}
+    .wrap{max-width:var(--max); margin:0 auto; padding:0 18px}
+
+    /* Nav */
+    .nav{
+      position:sticky; top:0; z-index:50;
+      backdrop-filter: blur(10px);
+      background: rgba(17,17,17,.72);
+      border-bottom:1px solid rgba(42,42,42,.7);
+    }
+    .navRow{
+      display:flex; align-items:center; justify-content:space-between;
+      padding:14px 0;
+      gap:14px;
+    }
+    .brand{
+      display:flex; align-items:center; gap:10px;
+      font-weight:700;
+      letter-spacing:.2px;
+    }
+    .logo{
+      width:34px; height:34px; border-radius:10px;
+      background: linear-gradient(135deg, var(--accent), var(--blue));
+      box-shadow: 0 10px 22px rgba(108,92,231,.25);
+      position:relative;
+    }
+    .logo:after{
+      content:"";
+      position:absolute; inset:10px;
+      border:2px solid rgba(255,255,255,.85);
+      border-radius:6px;
+      opacity:.85;
+    }
+    .navLinks{
+      display:flex; gap:14px; align-items:center;
+      color:var(--sub);
+      font-size:14px;
+    }
+    .navLinks a{padding:8px 10px; border-radius:10px}
+    .navLinks a:hover{background:rgba(255,255,255,.06); color:var(--text)}
+    .navCtas{display:flex; gap:10px; align-items:center}
+
+    /* Buttons */
+    .btn{
+      display:inline-flex; align-items:center; justify-content:center;
+      gap:10px;
+      padding:12px 14px;
+      border-radius:12px;
+      border:1px solid var(--border);
+      background:#1B1B1B;
+      color:var(--text);
+      font-weight:600;
+      font-size:14px;
+      cursor:pointer;
+      transition: transform .08s ease, background .15s ease, border-color .15s ease, opacity .15s ease;
+      user-select:none;
+      white-space:nowrap;
+    }
+    .btn:hover{background:#242424; border-color:#3A3A3A}
+    .btn:active{transform: translateY(1px)}
+    .btnPrimary{
+      background:var(--accent);
+      border-color:transparent;
+    }
+    .btnPrimary:hover{background:var(--accent2)}
+    .btnBlue{
+      background:var(--blue);
+      border-color:transparent;
+    }
+    .btnBlue:hover{background:var(--blueHover)}
+    .btnGhost{
+      background:transparent;
+      border-color:rgba(255,255,255,.10);
+      color:var(--sub);
+    }
+    .btnGhost:hover{background:rgba(255,255,255,.06); color:var(--text)}
+    .pill{
+      display:inline-flex; align-items:center; gap:8px;
+      padding:6px 10px;
+      border-radius:999px;
+      border:1px solid rgba(255,255,255,.10);
+      background: rgba(255,255,255,.05);
+      color:var(--sub);
+      font-size:12px;
+      font-weight:600;
+    }
+    .pillOk{
+      background: var(--okBg);
+      border-color: var(--okBorder);
+      color: var(--okText);
+    }
+
+    /* Hero */
+    .hero{padding:56px 0 26px}
+    .heroGrid{
+      display:grid;
+      grid-template-columns: 1.1fr .9fr;
+      gap:22px;
+      align-items:stretch;
+    }
+    .heroLeft{
+      padding:22px;
+      border-radius:var(--radius);
+      border:1px solid rgba(42,42,42,.8);
+      background: linear-gradient(180deg, rgba(15,15,15,.85), rgba(15,15,15,.65));
+      box-shadow: var(--shadow);
+    }
+    .h1{
+      font-size:44px;
+      line-height:1.05;
+      margin:14px 0 12px;
+      letter-spacing:-.6px;
+    }
+    .sublead{
+      color:var(--sub);
+      font-size:16px;
+      margin:0 0 18px;
+      max-width: 58ch;
+    }
+    .heroCtas{display:flex; flex-wrap:wrap; gap:10px; margin-top:14px}
+    .mini{
+      margin-top:14px;
+      color:var(--muted2);
+      font-size:12px;
+      display:flex;
+      gap:14px;
+      flex-wrap:wrap;
+    }
+    .mini span{display:inline-flex; align-items:center; gap:8px}
+    .dot{
+      width:8px; height:8px; border-radius:999px; background:rgba(255,255,255,.18);
+    }
+    .dot.purple{background:rgba(108,92,231,.85)}
+    .dot.blue{background:rgba(45,108,223,.85)}
+    .dot.ok{background:rgba(159,227,176,.85)}
+
+    .heroRight{
+      padding:22px;
+      border-radius:var(--radius);
+      border:1px solid rgba(42,42,42,.8);
+      background: rgba(21,21,21,.7);
+      box-shadow: var(--shadow);
+      display:flex; flex-direction:column;
+      justify-content:space-between;
+      gap:14px;
+    }
+    .mock{
+      border-radius:14px;
+      border:1px solid rgba(255,255,255,.08);
+      background:
+        radial-gradient(700px 260px at 30% 0%, rgba(108,92,231,.25), transparent 65%),
+        radial-gradient(700px 260px at 70% 20%, rgba(45,108,223,.18), transparent 60%),
+        #0b0b0b;
+      min-height: 240px;
+      position:relative;
+      overflow:hidden;
+    }
+    .mock:before{
+      content:"";
+      position:absolute; inset:-40px;
+      background: linear-gradient(110deg, transparent 20%, rgba(255,255,255,.06) 35%, transparent 55%);
+      transform: translateX(-40%);
+      animation: sheen 5.5s ease-in-out infinite;
+    }
+    @keyframes sheen{
+      0%{transform: translateX(-55%)}
+      55%{transform: translateX(40%)}
+      100%{transform: translateX(40%)}
+    }
+    .mockInner{
+      position:absolute; inset:16px;
+      border-radius:12px;
+      border:1px solid rgba(255,255,255,.08);
+      background: rgba(17,17,17,.65);
+      padding:14px;
+    }
+    .mockTop{
+      display:flex; justify-content:space-between; align-items:center;
+      margin-bottom:10px;
+      color:var(--sub);
+      font-weight:600;
+      font-size:12px;
+    }
+    .mockRow{
+      display:flex; gap:10px; flex-wrap:wrap; margin-top:10px;
+    }
+    .chip{
+      padding:8px 10px;
+      border-radius:12px;
+      border:1px solid rgba(255,255,255,.10);
+      background: rgba(255,255,255,.04);
+      color:var(--sub);
+      font-size:12px;
+      font-weight:700;
+    }
+    .chip.blue{background:rgba(45,108,223,.18); border-color:rgba(45,108,223,.35); color:#dbe7ff}
+    .chip.purple{background:rgba(108,92,231,.18); border-color:rgba(108,92,231,.35); color:#efeaff}
+    .chip.ok{background:rgba(30,108,58,.22); border-color:rgba(30,108,58,.5); color:#c8f3d4}
+
+    /* Sections */
+    section{padding:34px 0}
+    .sectionTitle{
+      font-size:24px;
+      margin:0 0 8px;
+      letter-spacing:-.3px;
+    }
+    .sectionDesc{
+      margin:0 0 18px;
+      color:var(--sub);
+      max-width: 75ch;
+    }
+    .grid3{
+      display:grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap:14px;
+    }
+    .card{
+      border:1px solid rgba(42,42,42,.9);
+      background: rgba(15,15,15,.65);
+      border-radius: var(--radius);
+      padding:16px;
+    }
+    .card h3{
+      margin:0 0 8px;
+      font-size:15px;
+      letter-spacing:-.2px;
+    }
+    .card p{margin:0; color:var(--sub); font-size:14px}
+    .kpiRow{
+      display:grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap:12px;
+      margin-top: 12px;
+    }
+    .kpi{
+      border:1px solid rgba(255,255,255,.08);
+      border-radius: 14px;
+      padding: 12px;
+      background: rgba(255,255,255,.04);
+    }
+    .kpi b{display:block; font-size:16px}
+    .kpi span{color:var(--sub); font-size:12px}
+
+    /* How-to */
+    .steps{
+      display:grid;
+      grid-template-columns: 1fr 1fr;
+      gap:14px;
+    }
+    .step{
+      display:flex;
+      gap:12px;
+      padding:16px;
+      border-radius: var(--radius);
+      border:1px solid rgba(42,42,42,.9);
+      background: rgba(15,15,15,.65);
+    }
+    .num{
+      width:34px; height:34px;
+      border-radius:12px;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      font-weight:800;
+      background: rgba(108,92,231,.18);
+      border:1px solid rgba(108,92,231,.35);
+      color:#efeaff;
+      flex:0 0 auto;
+    }
+    .step h4{margin:0 0 6px; font-size:15px}
+    .step p{margin:0; color:var(--sub); font-size:14px}
+
+    /* FAQ */
+    .faq{
+      border:1px solid rgba(42,42,42,.9);
+      border-radius: var(--radius);
+      overflow:hidden;
+      background: rgba(15,15,15,.65);
+    }
+    .faqItem{border-top:1px solid rgba(42,42,42,.9)}
+    .faqItem:first-child{border-top:none}
+    .faqQ{
+      width:100%;
+      text-align:left;
+      padding:14px 16px;
+      display:flex;
+      justify-content:space-between;
+      align-items:center;
+      gap:14px;
+      background:transparent;
+      border:none;
+      color:var(--text);
+      cursor:pointer;
+      font-weight:700;
+      font-size:14px;
+    }
+    .faqA{
+      padding:0 16px 14px;
+      color:var(--sub);
+      font-size:14px;
+      display:none;
+    }
+    .caret{
+      width:10px; height:10px;
+      border-right:2px solid rgba(255,255,255,.7);
+      border-bottom:2px solid rgba(255,255,255,.7);
+      transform: rotate(45deg);
+      transition: transform .15s ease;
+      flex:0 0 auto;
+    }
+    .open .faqA{display:block}
+    .open .caret{transform: rotate(225deg)}
+
+    /* Footer */
+    footer{
+      padding:22px 0 34px;
+      color:var(--muted2);
+      border-top:1px solid rgba(42,42,42,.7);
+      background: rgba(0,0,0,.15);
+    }
+    .footRow{
+      display:flex;
+      justify-content:space-between;
+      gap:14px;
+      flex-wrap:wrap;
+      align-items:center;
+    }
+    .small{font-size:12px}
+
+    /* Responsive */
+    @media (max-width: 960px){
+      .heroGrid{grid-template-columns: 1fr}
+      .grid3{grid-template-columns: 1fr}
+      .kpiRow{grid-template-columns: 1fr 1fr}
+      .steps{grid-template-columns: 1fr}
+      .h1{font-size:38px}
+      .navLinks{display:none}
+    }
+  </style>
+</head>
+
+<body>
+  <header class="nav">
+    <div class="wrap navRow">
+      <a class="brand" href="#top" aria-label="Anamorphic Desqueeze Pro Home">
+        <span class="logo" aria-hidden="true"></span>
+        <span>Anamorphic Desqueeze Pro</span>
+      </a>
+
+      <nav class="navLinks" aria-label="Main navigation">
+        <a href="#features">Features</a>
+        <a href="#how">How to use</a>
+        <a href="#workflow">Workflow</a>
+        <a href="#faq">FAQ</a>
+      </nav>
+
+      <div class="navCtas">
+        <a class="btn btnGhost" href="#how">Quick Start</a>
+        <a class="btn btnPrimary" id="downloadTop" href="#download">Download</a>
+      </div>
+    </div>
+  </header>
+
+  <main id="top" class="wrap">
+    <!-- HERO -->
+    <div class="hero">
+      <div class="heroGrid">
+        <div class="heroLeft">
+          <div class="pill">Windows • Batch • Clean output</div>
+
+          <h1 class="h1">Desqueeze anamorphic media fast — with batch processing and CinemaScope export.</h1>
+          <p class="sublead">
+            Drag & drop your photos or clips, choose the correct desqueeze ratio, optionally apply CinemaScope (2.39:1-style) crop/pad,
+            and export clean results. Built for creators who just want it done — correctly.
+          </p>
+
+          <div class="heroCtas">
+            <a class="btn btnPrimary" href="#download">Get it on Microsoft Store</a>
+            <a class="btn btnBlue" href="#how">See how it works</a>
+            <button class="btn btnGhost" id="copyStoreLink" type="button">Copy Store Link</button>
+          </div>
+
+          <div class="mini" aria-label="Key highlights">
+            <span><span class="dot ok"></span>Batch processing</span>
+            <span><span class="dot purple"></span>CinemaScope (2.39:1) export</span>
+            <span><span class="dot blue"></span>Export selected</span>
+            <span><span class="dot"></span>MP4/MOV/JPG/PNG/TIF</span>
+          </div>
+        </div>
+
+        <div class="heroRight">
+          <div class="mock" role="img" aria-label="UI preview mock">
+            <div class="mockInner">
+              <div class="mockTop">
+                <span>Import</span>
+                <span class="pill pillOk">Drag & Drop</span>
+              </div>
+              <div class="mockRow">
+                <span class="chip blue">Add Images</span>
+                <span class="chip blue">Add Videos</span>
+                <span class="chip" style="background:rgba(178,59,59,.18);border-color:rgba(178,59,59,.35);color:#ffdede;">Clear Videos</span>
+              </div>
+              <div class="mockRow">
+                <span class="chip">Select All Videos</span>
+                <span class="chip">Select None</span>
+              </div>
+              <div class="mockRow" style="margin-top:14px">
+                <span class="chip purple">Export Selected</span>
+                <span class="chip">Export All</span>
+                <span class="chip purple">Merge + Export Selected</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="kpiRow" aria-label="Capability summary">
+            <div class="kpi"><b>Batch</b><span>Process multiple files</span></div>
+            <div class="kpi"><b>Ratios</b><span>Presets + custom</span></div>
+            <div class="kpi"><b>CinemaScope</b><span>Crop/pad controls</span></div>
+            <div class="kpi"><b>Selection</b><span>Export only checked</span></div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- FEATURES -->
+    <section id="features">
+      <h2 class="sectionTitle">Complete feature set</h2>
+      <p class="sectionDesc">
+        Everything is designed for a fast and reliable desktop workflow: import, desqueeze, optional CinemaScope, and export.
+      </p>
+
+      <div class="grid3">
+        <div class="card">
+          <h3>Drag & drop import</h3>
+          <p>Drop files anywhere in the window or use Add buttons. Works with MP4/MOV and JPG/PNG/TIF.</p>
+        </div>
+        <div class="card">
+          <h3>Desqueeze ratio presets</h3>
+          <p>Select common anamorphic factors (via presets in the app). Clear readouts show exactly what’s applied.</p>
+        </div>
+        <div class="card">
+          <h3>Custom ratio input</h3>
+          <p>When enabled in your build, you can type a custom ratio (e.g., 1.60) for unusual lenses and adapters.</p>
+        </div>
+
+        <div class="card">
+          <h3>CinemaScope export</h3>
+          <p>Optional crop/pad after desqueeze for a clean CinemaScope-style output. Includes presets and fit modes.</p>
+        </div>
+        <div class="card">
+          <h3>Reframe offsets</h3>
+          <p>Offset X/Y sliders help you reframe quickly before export — no extra editor needed.</p>
+        </div>
+        <div class="card">
+          <h3>Export workflows</h3>
+          <p>Export Selected (checkbox-driven), Export All, and Merge + Export Selected for selected clips.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- HOW TO USE -->
+    <section id="how">
+      <h2 class="sectionTitle">How to use (Quick Start)</h2>
+      <p class="sectionDesc">
+        A simple workflow that matches the app UI — import → choose ratio → optional CinemaScope → export.
+      </p>
+
+      <div class="steps">
+        <div class="step">
+          <div class="num">1</div>
+          <div>
+            <h4>Import files</h4>
+            <p>Use <b>Add Images</b> / <b>Add Videos</b> or drag & drop files anywhere inside the app window.</p>
+          </div>
+        </div>
+        <div class="step">
+          <div class="num">2</div>
+          <div>
+            <h4>Select export ratio</h4>
+            <p>Pick your desqueeze ratio preset. If your build supports it, enter a custom ratio when needed.</p>
+          </div>
+        </div>
+        <div class="step">
+          <div class="num">3</div>
+          <div>
+            <h4>Optional: enable CinemaScope</h4>
+            <p>Turn on CinemaScope export, choose preset/fit mode, and adjust Offset X/Y for perfect framing.</p>
+          </div>
+        </div>
+        <div class="step">
+          <div class="num">4</div>
+          <div>
+            <h4>Choose output folder</h4>
+            <p>Confirm Output Folder or click <b>Browse</b> to change where results are saved.</p>
+          </div>
+        </div>
+        <div class="step">
+          <div class="num">5</div>
+          <div>
+            <h4>Export Selected or Export All</h4>
+            <p>Use checkboxes in the job list to export only what you want, or export everything in one run.</p>
+          </div>
+        </div>
+        <div class="step">
+          <div class="num">6</div>
+          <div>
+            <h4>Monitor status</h4>
+            <p>The right-side list shows Type/File/Status, and the bottom left displays export progress text.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- WORKFLOW DETAILS -->
+    <section id="workflow">
+      <h2 class="sectionTitle">Workflow details</h2>
+      <p class="sectionDesc">
+        Use these options to match your exact lens workflow and deliver clean, share-ready results.
+      </p>
+
+      <div class="grid3">
+        <div class="card">
+          <h3>Export Selected (checkbox-driven)</h3>
+          <p>Tick ✓ for the items you want, then run Export Selected. Great for mixed import batches.</p>
+        </div>
+        <div class="card">
+          <h3>Per-clip CinemaScope (optional)</h3>
+          <p>When enabled in your VM, per-clip export can preserve each clip’s crop/offset from Preview.</p>
+        </div>
+        <div class="card">
+          <h3>Merge + Export Selected</h3>
+          <p>Select multiple clips and generate one merged output (depends on your VM implementation).</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- DOWNLOAD -->
+    <section id="download">
+      <h2 class="sectionTitle">Download</h2>
+      <p class="sectionDesc">
+        Get the official release from the Microsoft Store.
+      </p>
+
+      <div class="card" style="display:flex;gap:12px;align-items:center;justify-content:space-between;flex-wrap:wrap">
+        <div>
+          <div class="pill pillOk">Windows</div>
+          <h3 style="margin:10px 0 6px">Anamorphic Desqueeze Pro</h3>
+          <p style="margin:0;color:var(--sub);font-size:14px">Batch desqueeze + CinemaScope export for photos & videos.</p>
+        </div>
+
+        <div style="display:flex;gap:10px;flex-wrap:wrap">
+          <a class="btn btnPrimary" href="https://apps.microsoft.com/detail/9ph01d6pq8x3?ocid=webpdpshare" target="_blank" rel="noopener noreferrer">
+            Open Microsoft Store
+          </a>
+          <button class="btn btnGhost" id="copyStoreLink2" type="button">Copy Store Link</button>
+        </div>
+      </div>
+
+      <p class="small" style="margin-top:10px;color:var(--muted2)">
+        Tip: Replace <code>YOUR-DOMAIN-HERE.com</code> and add screenshots in <code>/assets</code> for the best SEO.
+      </p>
+    </section>
+
+    <!-- FAQ -->
+    <section id="faq">
+      <h2 class="sectionTitle">FAQ</h2>
+      <p class="sectionDesc">Quick answers to the most common workflow questions.</p>
+
+      <div class="faq" role="region" aria-label="Frequently asked questions">
+        <div class="faqItem">
+          <button class="faqQ" type="button">
+            How do I export only some clips?
+            <span class="caret" aria-hidden="true"></span>
+          </button>
+          <div class="faqA">
+            Use the ✓ checkbox column in the right list. Tick only the items you want, then click <b>Export Selected</b>.
+          </div>
+        </div>
+
+        <div class="faqItem">
+          <button class="faqQ" type="button">
+            When should I enable CinemaScope?
+            <span class="caret" aria-hidden="true"></span>
+          </button>
+          <div class="faqA">
+            Enable CinemaScope when you want a CinemaScope-style output after desqueeze (crop/pad). Use presets/fit modes and Offset X/Y to reframe.
+          </div>
+        </div>
+
+        <div class="faqItem">
+          <button class="faqQ" type="button">
+            Can I use a custom desqueeze ratio?
+            <span class="caret" aria-hidden="true"></span>
+          </button>
+          <div class="faqA">
+            If your build enables the Custom Ratio field, type the ratio (example: <b>1.60</b>) and export as usual.
+          </div>
+        </div>
+
+        <div class="faqItem">
+          <button class="faqQ" type="button">
+            What file types are supported?
+            <span class="caret" aria-hidden="true"></span>
+          </button>
+          <div class="faqA">
+            The UI supports videos <b>MP4/MOV</b> and images <b>JPG/PNG/TIF</b>. Drag & drop is supported.
+          </div>
+        </div>
+
+        <div class="faqItem">
+          <button class="faqQ" type="button">
+            Where are exported files saved?
+            <span class="caret" aria-hidden="true"></span>
+          </button>
+          <div class="faqA">
+            Exports are saved to the folder shown in <b>Output Folder</b>. Click <b>Browse</b> to change it.
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="wrap footRow">
+      <div class="brand" style="gap:10px">
+        <span class="logo" aria-hidden="true"></span>
+        <div>
+          <div style="font-weight:800;color:var(--text)">Anamorphic Desqueeze Pro</div>
+          <div class="small">Batch desqueeze + CinemaScope export for Windows</div>
+        </div>
+      </div>
+
+      <div class="small">
+        © <span id="year"></span> • All rights reserved
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    // Year
+    document.getElementById('year').textContent = new Date().getFullYear();
+
+    // FAQ accordion
+    document.querySelectorAll('.faqItem').forEach(item => {
+      const btn = item.querySelector('.faqQ');
+      btn.addEventListener('click', () => {
+        const isOpen = item.classList.contains('open');
+        document.querySelectorAll('.faqItem.open').forEach(x => x.classList.remove('open'));
+        if (!isOpen) item.classList.add('open');
+      });
+    });
+
+    // Copy Store link
+    const storeUrl = "https://apps.microsoft.com/detail/9ph01d6pq8x3?ocid=webpdpshare";
+    function copyToClipboard(text){
+      navigator.clipboard.writeText(text).then(() => {
+        const prev = document.activeElement;
+        alert("Store link copied!");
+        if (prev) prev.blur();
+      }).catch(() => {
+        // fallback
+        const ta = document.createElement('textarea');
+        ta.value = text;
+        document.body.appendChild(ta);
+        ta.select();
+        document.execCommand('copy');
+        document.body.removeChild(ta);
+        alert("Store link copied!");
+      });
+    }
+    document.getElementById('copyStoreLink').addEventListener('click', () => copyToClipboard(storeUrl));
+    document.getElementById('copyStoreLink2').addEventListener('click', () => copyToClipboard(storeUrl));
+  </script>
+</body>
+</html>
