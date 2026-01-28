@@ -5,22 +5,22 @@
   <meta name="viewport" content="width=device-width,initial-scale=1" />
   <meta name="theme-color" content="#111111" />
 
-  <title>Anamorphic Desqueeze Pro — Batch Desqueeze + CinemaScope Export for Photos & Videos</title>
-  <meta name="description" content="Desqueeze anamorphic photos & videos on Windows with batch processing, CinemaScope (2.39:1) crop/pad, custom ratios, and export-selected workflows. Drag & drop MP4/MOV/JPG/PNG/TIF and export clean results fast." />
+  <title>Anamorphic Desqueeze Pro — Professional Batch Desqueeze + CinemaScope Finishing (Windows)</title>
+  <meta name="description" content="Professional Windows tool for batch desqueeze of anamorphic photos & videos with CinemaScope finishing (2.39:1 and more), precision reframing, and reliable export workflows. Built for DITs, editors, and filmmakers." />
   <meta name="robots" content="index,follow" />
   <link rel="canonical" href="https://YOUR-DOMAIN-HERE.com/" />
 
   <!-- Open Graph -->
-  <meta property="og:title" content="Anamorphic Desqueeze Pro" />
-  <meta property="og:description" content="Batch desqueeze anamorphic photos & videos + CinemaScope export on Windows." />
+  <meta property="og:title" content="Anamorphic Desqueeze Pro — Professional Edition" />
+  <meta property="og:description" content="Professional batch desqueeze + CinemaScope finishing for anamorphic photos & videos on Windows." />
   <meta property="og:type" content="website" />
   <meta property="og:url" content="https://YOUR-DOMAIN-HERE.com/" />
   <meta property="og:image" content="https://YOUR-DOMAIN-HERE.com/assets/og-image.png" />
 
   <!-- Twitter -->
   <meta name="twitter:card" content="summary_large_image" />
-  <meta name="twitter:title" content="Anamorphic Desqueeze Pro" />
-  <meta name="twitter:description" content="Batch desqueeze + CinemaScope export for photos & videos on Windows." />
+  <meta name="twitter:title" content="Anamorphic Desqueeze Pro — Professional Edition" />
+  <meta name="twitter:description" content="Batch desqueeze + CinemaScope finishing for photos & videos on Windows." />
   <meta name="twitter:image" content="https://YOUR-DOMAIN-HERE.com/assets/og-image.png" />
 
   <!-- JSON-LD (SoftwareApplication) -->
@@ -31,12 +31,12 @@
     "name": "Anamorphic Desqueeze Pro",
     "applicationCategory": "MultimediaApplication",
     "operatingSystem": "Windows",
-    "description": "Desqueeze anamorphic photos & videos on Windows with batch processing, CinemaScope export, custom ratios, and export-selected workflows.",
+    "description": "Professional Windows tool for batch desqueeze of anamorphic photos & videos with CinemaScope finishing, precision reframing and export workflows.",
     "softwareVersion": "1.0.10.0",
     "offers": {
       "@type": "Offer",
       "priceCurrency": "USD",
-      "price": "0",
+      "price": "1000",
       "availability": "https://schema.org/InStock"
     }
   }
@@ -174,6 +174,11 @@
       border-color: var(--okBorder);
       color: var(--okText);
     }
+    .pillPro{
+      background: rgba(108,92,231,.16);
+      border-color: rgba(108,92,231,.35);
+      color: #efeaff;
+    }
 
     /* Hero */
     .hero{padding:56px 0 26px}
@@ -200,7 +205,7 @@
       color:var(--sub);
       font-size:16px;
       margin:0 0 18px;
-      max-width: 58ch;
+      max-width: 62ch;
     }
     .heroCtas{display:flex; flex-wrap:wrap; gap:10px; margin-top:14px}
     .mini{
@@ -292,7 +297,7 @@
     .sectionDesc{
       margin:0 0 18px;
       color:var(--sub);
-      max-width: 75ch;
+      max-width: 82ch;
     }
     .grid3{
       display:grid;
@@ -354,6 +359,36 @@
     }
     .step h4{margin:0 0 6px; font-size:15px}
     .step p{margin:0; color:var(--sub); font-size:14px}
+
+    /* Pricing */
+    .priceGrid{
+      display:grid;
+      grid-template-columns: 1.1fr .9fr;
+      gap:14px;
+      align-items:stretch;
+    }
+    .priceBox{
+      border:1px solid rgba(42,42,42,.9);
+      background: rgba(15,15,15,.65);
+      border-radius: var(--radius);
+      padding:18px;
+    }
+    .priceTag{
+      font-size:38px;
+      font-weight:900;
+      letter-spacing:-.8px;
+      margin:10px 0 6px;
+    }
+    .priceSub{
+      color:var(--sub);
+      margin:0 0 12px;
+      font-size:14px;
+      max-width: 70ch;
+    }
+    .ul{
+      margin:0; padding:0 0 0 18px; color:var(--sub); font-size:14px;
+    }
+    .ul li{margin:8px 0}
 
     /* FAQ */
     .faq{
@@ -418,6 +453,7 @@
       .grid3{grid-template-columns: 1fr}
       .kpiRow{grid-template-columns: 1fr 1fr}
       .steps{grid-template-columns: 1fr}
+      .priceGrid{grid-template-columns: 1fr}
       .h1{font-size:38px}
       .navLinks{display:none}
     }
@@ -435,6 +471,7 @@
       <nav class="navLinks" aria-label="Main navigation">
         <a href="#features">Features</a>
         <a href="#how">How to use</a>
+        <a href="#pricing">Pricing</a>
         <a href="#workflow">Workflow</a>
         <a href="#faq">FAQ</a>
       </nav>
@@ -451,23 +488,26 @@
     <div class="hero">
       <div class="heroGrid">
         <div class="heroLeft">
-          <div class="pill">Windows • Batch • Clean output</div>
+          <div style="display:flex;gap:10px;flex-wrap:wrap;align-items:center">
+            <div class="pill">Windows • Professional workflow</div>
+            <div class="pill pillPro">Studio License • $1000</div>
+          </div>
 
-          <h1 class="h1">Desqueeze anamorphic media fast — with batch processing and CinemaScope export.</h1>
+          <h1 class="h1">Professional anamorphic desqueeze — batch-ready, CinemaScope-perfect.</h1>
           <p class="sublead">
-            Drag & drop your photos or clips, choose the correct desqueeze ratio, optionally apply CinemaScope (2.39:1-style) crop/pad,
-            and export clean results. Built for creators who just want it done — correctly.
+            Built for DITs, editors, and filmmakers: import large batches, apply the correct desqueeze factor,
+            finish in CinemaScope ratios (2.39:1 and more) with precision reframing, and export clean deliverables fast.
           </p>
 
           <div class="heroCtas">
             <a class="btn btnPrimary" href="#download">Get it on Microsoft Store</a>
-            <a class="btn btnBlue" href="#how">See how it works</a>
+            <a class="btn btnBlue" href="#how">How to use</a>
             <button class="btn btnGhost" id="copyStoreLink" type="button">Copy Store Link</button>
           </div>
 
           <div class="mini" aria-label="Key highlights">
             <span><span class="dot ok"></span>Batch processing</span>
-            <span><span class="dot purple"></span>CinemaScope (2.39:1) export</span>
+            <span><span class="dot purple"></span>CinemaScope finishing</span>
             <span><span class="dot blue"></span>Export selected</span>
             <span><span class="dot"></span>MP4/MOV/JPG/PNG/TIF</span>
           </div>
@@ -477,31 +517,32 @@
           <div class="mock" role="img" aria-label="UI preview mock">
             <div class="mockInner">
               <div class="mockTop">
-                <span>Import</span>
-                <span class="pill pillOk">Drag & Drop</span>
+                <span>Professional workflow</span>
+                <span class="pill pillOk">Fast + Consistent</span>
               </div>
               <div class="mockRow">
                 <span class="chip blue">Add Images</span>
                 <span class="chip blue">Add Videos</span>
-                <span class="chip" style="background:rgba(178,59,59,.18);border-color:rgba(178,59,59,.35);color:#ffdede;">Clear Videos</span>
+                <span class="chip" style="background:rgba(178,59,59,.18);border-color:rgba(178,59,59,.35);color:#ffdede;">Clear</span>
               </div>
               <div class="mockRow">
-                <span class="chip">Select All Videos</span>
+                <span class="chip">Select All</span>
                 <span class="chip">Select None</span>
+                <span class="chip ok">Output Folder</span>
               </div>
               <div class="mockRow" style="margin-top:14px">
                 <span class="chip purple">Export Selected</span>
                 <span class="chip">Export All</span>
-                <span class="chip purple">Merge + Export Selected</span>
+                <span class="chip purple">Merge + Export</span>
               </div>
             </div>
           </div>
 
           <div class="kpiRow" aria-label="Capability summary">
-            <div class="kpi"><b>Batch</b><span>Process multiple files</span></div>
+            <div class="kpi"><b>Batch</b><span>Large file sets</span></div>
             <div class="kpi"><b>Ratios</b><span>Presets + custom</span></div>
-            <div class="kpi"><b>CinemaScope</b><span>Crop/pad controls</span></div>
-            <div class="kpi"><b>Selection</b><span>Export only checked</span></div>
+            <div class="kpi"><b>Scope</b><span>2.39, 2.35, 2.55, 2.76</span></div>
+            <div class="kpi"><b>Control</b><span>Reframe offsets</span></div>
           </div>
         </div>
       </div>
@@ -509,88 +550,139 @@
 
     <!-- FEATURES -->
     <section id="features">
-      <h2 class="sectionTitle">Complete feature set</h2>
+      <h2 class="sectionTitle">Professional features</h2>
       <p class="sectionDesc">
-        Everything is designed for a fast and reliable desktop workflow: import, desqueeze, optional CinemaScope, and export.
+        A production-friendly finishing tool: predictable results, fast batching, and cinema ratios without extra editors.
       </p>
 
       <div class="grid3">
         <div class="card">
-          <h3>Drag & drop import</h3>
-          <p>Drop files anywhere in the window or use Add buttons. Works with MP4/MOV and JPG/PNG/TIF.</p>
+          <h3>Batch import + queue</h3>
+          <p>Add many files and process them in one run. Ideal for dailies, social exports, and shot review.</p>
         </div>
         <div class="card">
-          <h3>Desqueeze ratio presets</h3>
-          <p>Select common anamorphic factors (via presets in the app). Clear readouts show exactly what’s applied.</p>
+          <h3>Desqueeze presets + custom</h3>
+          <p>Choose common anamorphic factors, or enter custom ratios for unusual lenses/adapters.</p>
         </div>
         <div class="card">
-          <h3>Custom ratio input</h3>
-          <p>When enabled in your build, you can type a custom ratio (e.g., 1.60) for unusual lenses and adapters.</p>
+          <h3>CinemaScope finishing</h3>
+          <p>Apply CinemaScope ratios after desqueeze with crop-to-fill or fit/pad modes for clean deliverables.</p>
         </div>
 
         <div class="card">
-          <h3>CinemaScope export</h3>
-          <p>Optional crop/pad after desqueeze for a clean CinemaScope-style output. Includes presets and fit modes.</p>
+          <h3>Precision reframing</h3>
+          <p>Offset X/Y controls help you reframe without opening another editor—fast, repeatable results.</p>
         </div>
         <div class="card">
-          <h3>Reframe offsets</h3>
-          <p>Offset X/Y sliders help you reframe quickly before export — no extra editor needed.</p>
+          <h3>Export Selected workflow</h3>
+          <p>Checkbox-based exporting lets you process only the clips you want—even inside large batches.</p>
         </div>
         <div class="card">
-          <h3>Export workflows</h3>
-          <p>Export Selected (checkbox-driven), Export All, and Merge + Export Selected for selected clips.</p>
+          <h3>Merge workflows</h3>
+          <p>Combine selected clips into one output when you need a single deliverable (tests, takes, reels).</p>
         </div>
       </div>
     </section>
 
     <!-- HOW TO USE -->
     <section id="how">
-      <h2 class="sectionTitle">How to use (Quick Start)</h2>
+      <h2 class="sectionTitle">How to use (Professional guide)</h2>
       <p class="sectionDesc">
-        A simple workflow that matches the app UI — import → choose ratio → optional CinemaScope → export.
+        This guide is written to match the app UI. Follow it exactly: import → ratio → (optional) CinemaScope → export.
       </p>
 
       <div class="steps">
         <div class="step">
           <div class="num">1</div>
           <div>
-            <h4>Import files</h4>
-            <p>Use <b>Add Images</b> / <b>Add Videos</b> or drag & drop files anywhere inside the app window.</p>
+            <h4>Import media</h4>
+            <p>Click <b>Add Images</b> / <b>Add Videos</b>, or drag & drop files into the app window. Your queue fills on the right.</p>
           </div>
         </div>
         <div class="step">
           <div class="num">2</div>
           <div>
-            <h4>Select export ratio</h4>
-            <p>Pick your desqueeze ratio preset. If your build supports it, enter a custom ratio when needed.</p>
+            <h4>Set the desqueeze factor</h4>
+            <p>Select the correct ratio for your lens (ex: <b>1.33x</b>, <b>1.5x</b>, <b>1.8x</b>, <b>2.0x</b>). Use <b>Custom</b> for special adapters (ex: <b>1.60x</b>).</p>
           </div>
         </div>
         <div class="step">
           <div class="num">3</div>
           <div>
-            <h4>Optional: enable CinemaScope</h4>
-            <p>Turn on CinemaScope export, choose preset/fit mode, and adjust Offset X/Y for perfect framing.</p>
+            <h4>Choose CinemaScope finishing (optional)</h4>
+            <p>Enable CinemaScope export, choose a preset ratio like <b>2.39:1</b>, and select <b>Crop</b> (fill) or <b>Pad</b> (fit).</p>
           </div>
         </div>
         <div class="step">
           <div class="num">4</div>
           <div>
-            <h4>Choose output folder</h4>
-            <p>Confirm Output Folder or click <b>Browse</b> to change where results are saved.</p>
+            <h4>Reframe with offsets (optional)</h4>
+            <p>If your subject is too high/low after cropping, adjust <b>Offset X/Y</b> until framing is correct. Use the crop preview if available.</p>
           </div>
         </div>
         <div class="step">
           <div class="num">5</div>
           <div>
-            <h4>Export Selected or Export All</h4>
-            <p>Use checkboxes in the job list to export only what you want, or export everything in one run.</p>
+            <h4>Set output folder</h4>
+            <p>Confirm the <b>Output Folder</b>. Use <b>Browse</b> to route exports to your project deliverables directory.</p>
           </div>
         </div>
         <div class="step">
           <div class="num">6</div>
           <div>
-            <h4>Monitor status</h4>
-            <p>The right-side list shows Type/File/Status, and the bottom left displays export progress text.</p>
+            <h4>Export with the right workflow</h4>
+            <p><b>Export Selected</b> = only checked items. <b>Export All</b> = entire queue. Use <b>Merge + Export</b> when you need one combined file.</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="card" style="margin-top:14px">
+        <h3>Professional tips</h3>
+        <p style="margin:0;color:var(--sub);font-size:14px">
+          • If you don’t know the lens factor, start with <b>1.33x</b> for many modern anamorphic smartphone lenses, <b>1.5x</b> for adapters, and <b>2.0x</b> for classic anamorphic—then visually confirm circles look round.<br/>
+          • For CinemaScope delivery, <b>2.39:1 crop-to-fill</b> is the most common finishing choice.<br/>
+          • Use <b>Export Selected</b> for QA: process 1–2 clips first, validate look, then run the full batch.
+        </p>
+      </div>
+    </section>
+
+    <!-- PRICING -->
+    <section id="pricing">
+      <h2 class="sectionTitle">Pricing</h2>
+      <p class="sectionDesc">
+        Positioned as a professional utility: fast, consistent, and built for real-world delivery pipelines.
+      </p>
+
+      <div class="priceGrid">
+        <div class="priceBox">
+          <div class="pill pillPro">Professional / Studio License</div>
+          <div class="priceTag">$1000</div>
+          <p class="priceSub">
+            Best for studios, agencies, and professionals processing high volumes of anamorphic media.
+          </p>
+          <ul class="ul">
+            <li>Batch desqueeze for photos + videos</li>
+            <li>CinemaScope ratios (2.39:1 / 2.35:1 / 2.55:1 / 2.76:1 + custom)</li>
+            <li>Precision reframing via X/Y offsets</li>
+            <li>Export Selected workflow for QC</li>
+            <li>Production-oriented, repeatable outputs</li>
+          </ul>
+        </div>
+
+        <div class="priceBox">
+          <div class="pill pillOk">Who it’s for</div>
+          <p class="priceSub" style="margin-top:10px">
+            If you do any of the following, the Pro license pays for itself quickly:
+          </p>
+          <ul class="ul">
+            <li>DIT / dailies processing</li>
+            <li>Agency content teams exporting multiple deliverables</li>
+            <li>Editors who need consistent CinemaScope outputs</li>
+            <li>Creators working with anamorphic lenses/adapters weekly</li>
+          </ul>
+
+          <div style="margin-top:12px;color:var(--muted2);font-size:12px">
+            Note: Replace the download CTA below with your final store / checkout method.
           </div>
         </div>
       </div>
@@ -600,21 +692,21 @@
     <section id="workflow">
       <h2 class="sectionTitle">Workflow details</h2>
       <p class="sectionDesc">
-        Use these options to match your exact lens workflow and deliver clean, share-ready results.
+        Use these options to match your lens workflow and deliver clean, share-ready results.
       </p>
 
       <div class="grid3">
         <div class="card">
-          <h3>Export Selected (checkbox-driven)</h3>
-          <p>Tick ✓ for the items you want, then run Export Selected. Great for mixed import batches.</p>
+          <h3>Export Selected (QC-first)</h3>
+          <p>Tick ✓ for the items you want, run Export Selected, validate framing/ratio, then export the full batch.</p>
         </div>
         <div class="card">
-          <h3>Per-clip CinemaScope (optional)</h3>
-          <p>When enabled in your VM, per-clip export can preserve each clip’s crop/offset from Preview.</p>
+          <h3>CinemaScope crop vs pad</h3>
+          <p><b>Crop</b> fills the frame (most common). <b>Pad</b> preserves full image with letterboxing/pillarboxing.</p>
         </div>
         <div class="card">
-          <h3>Merge + Export Selected</h3>
-          <p>Select multiple clips and generate one merged output (depends on your VM implementation).</p>
+          <h3>Recommended delivery</h3>
+          <p>For most cinema-style exports: desqueeze → <b>2.39:1 crop-to-fill</b> → export MP4/PNG deliverables.</p>
         </div>
       </div>
     </section>
@@ -628,9 +720,12 @@
 
       <div class="card" style="display:flex;gap:12px;align-items:center;justify-content:space-between;flex-wrap:wrap">
         <div>
-          <div class="pill pillOk">Windows</div>
+          <div style="display:flex;gap:10px;flex-wrap:wrap;align-items:center">
+            <div class="pill pillOk">Windows</div>
+            <div class="pill pillPro">Professional • $1000</div>
+          </div>
           <h3 style="margin:10px 0 6px">Anamorphic Desqueeze Pro</h3>
-          <p style="margin:0;color:var(--sub);font-size:14px">Batch desqueeze + CinemaScope export for photos & videos.</p>
+          <p style="margin:0;color:var(--sub);font-size:14px">Professional batch desqueeze + CinemaScope finishing for photos & videos.</p>
         </div>
 
         <div style="display:flex;gap:10px;flex-wrap:wrap">
@@ -642,7 +737,7 @@
       </div>
 
       <p class="small" style="margin-top:10px;color:var(--muted2)">
-        Tip: Replace <code>YOUR-DOMAIN-HERE.com</code> and add screenshots in <code>/assets</code> for the best SEO.
+        Tip: Replace <code>YOUR-DOMAIN-HERE.com</code> and add real screenshots in <code>/assets</code> for best SEO.
       </p>
     </section>
 
@@ -658,37 +753,37 @@
             <span class="caret" aria-hidden="true"></span>
           </button>
           <div class="faqA">
-            Use the ✓ checkbox column in the right list. Tick only the items you want, then click <b>Export Selected</b>.
+            Use the ✓ checkbox column. Tick only the items you want, then click <b>Export Selected</b>.
           </div>
         </div>
 
         <div class="faqItem">
           <button class="faqQ" type="button">
-            When should I enable CinemaScope?
+            What CinemaScope ratio should I use?
             <span class="caret" aria-hidden="true"></span>
           </button>
           <div class="faqA">
-            Enable CinemaScope when you want a CinemaScope-style output after desqueeze (crop/pad). Use presets/fit modes and Offset X/Y to reframe.
+            For most modern deliveries, choose <b>2.39:1</b>. Use <b>2.35:1</b> for legacy projects, <b>2.55:1</b> for classic CinemaScope, and <b>2.76:1</b> for Ultra Panavision-style output.
           </div>
         </div>
 
         <div class="faqItem">
           <button class="faqQ" type="button">
-            Can I use a custom desqueeze ratio?
+            Crop or Pad — which is better?
             <span class="caret" aria-hidden="true"></span>
           </button>
           <div class="faqA">
-            If your build enables the Custom Ratio field, type the ratio (example: <b>1.60</b>) and export as usual.
+            <b>Crop</b> is the standard cinematic finish (fills frame). <b>Pad</b> preserves the full image with black bars.
           </div>
         </div>
 
         <div class="faqItem">
           <button class="faqQ" type="button">
-            What file types are supported?
+            How do I find my lens desqueeze factor?
             <span class="caret" aria-hidden="true"></span>
           </button>
           <div class="faqA">
-            The UI supports videos <b>MP4/MOV</b> and images <b>JPG/PNG/TIF</b>. Drag & drop is supported.
+            Check your lens/adapter specs first. If unsure, try common values (<b>1.33x</b>, <b>1.5x</b>, <b>1.8x</b>, <b>2.0x</b>) and confirm circles look round and faces look natural.
           </div>
         </div>
 
@@ -711,7 +806,7 @@
         <span class="logo" aria-hidden="true"></span>
         <div>
           <div style="font-weight:800;color:var(--text)">Anamorphic Desqueeze Pro</div>
-          <div class="small">Batch desqueeze + CinemaScope export for Windows</div>
+          <div class="small">Professional batch desqueeze + CinemaScope finishing (Windows)</div>
         </div>
       </div>
 
